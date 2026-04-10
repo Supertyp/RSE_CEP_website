@@ -1,5 +1,7 @@
 # RSE Capacity Enhancement Project Website
 
+**Live site: [supertyp.github.io/RSE_CEP_website](https://supertyp.github.io/RSE_CEP_website/)**
+
 Static website for the Research Software Engineering Capacity Enhancement Project (RSE CEP). Built with [Astro](https://astro.build).
 
 ## Pages
