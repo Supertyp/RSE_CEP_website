@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<BaseLayout title="Search" description="Search the RSE CEP website">
+  <Fragment slot="head">
+    <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
+  </Fragment>
+
+  <h1>Search</h1>
+  <div id="search"></div>
+  <p id="search-unavailable" style="display:none; color: var(--color-muted)">
+    Search index not found. Run <code>npm run build</code> to generate it, or use the deployed site.
+  </p>
+</BaseLayout>
+
+<script is:inline define:vars={{ pagefindBase: base }}>
+  window.addEventListener('DOMContentLoaded', function () {
+    var script = document.createElement('script');
+    script.src = pagefindBase + 'pagefind/pagefind-ui.js';
+    script.onload = function () {
+      new PagefindUI({ element: '#search', showSubResults: true });
+    };
+    script.onerror = function () {
+      document.getElementById('search').style.display = 'none';
+      document.getElementById('search-unavailable').style.display = 'block';
+    };
+    document.head.appendChild(script);
+  });
+</script>
