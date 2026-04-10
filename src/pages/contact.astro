@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with the RSE CEP team">
+  <h1>Contact</h1>
+  <p>
+    For enquiries about the RSE Capacity Enhancement Project, please reach out via the
+    channels below.
+  </p>
+
+  <dl class="contact-list">
+    <div>
+      <dt>Email</dt>
+      <dd><a href="mailto:rse-cep@example.org">rse-cep@example.org</a></dd>
+    </div>
+    <div>
+      <dt>GitHub</dt>
+      <dd><a href="https://github.com/your-org">github.com/your-org</a></dd>
+    </div>
+  </dl>
+</BaseLayout>
+
+<style>
+  .contact-list {
+    margin: 2rem 0 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .contact-list div {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  dt {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  dd {
+    margin: 0;
+  }
+</style>

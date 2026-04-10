@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const team = [
+  {
+    name: 'Name Surname',
+    role: 'Role · Institution',
+    bio: 'Brief description of this team member\'s background and contribution to the project.',
+  },
+  {
+    name: 'Name Surname',
+    role: 'Role · Institution',
+    bio: 'Brief description of this team member\'s background and contribution to the project.',
+  },
+  {
+    name: 'Name Surname',
+    role: 'Role · Institution',
+    bio: 'Brief description of this team member\'s background and contribution to the project.',
+  },
+];
+---
+
+<BaseLayout title="Team" description="Meet the RSE CEP team">
+  <h1>Team</h1>
+  <p>The RSE CEP project is carried out by the following team members.</p>
+
+  <ul class="team-list">
+    {team.map((member) => (
+      <li class="member">
+        <div class="member-name">{member.name}</div>
+        <div class="member-role">{member.role}</div>
+        <p class="member-bio">{member.bio}</p>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .team-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .member {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+  }
+
+  .member-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .member-role {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    margin: 0.2rem 0 0.75rem;
+  }
+
+  .member-bio {
+    margin: 0;
+  }
+</style>
