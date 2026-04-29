@@ -1,0 +1,131 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const allPatterns = await getCollection('patterns');
+
+const typeOrder = ['architectural', 'implementation', 'design', 'process'];
+const typeLabels: Record<string, string> = {
+  architectural: 'Architectural',
+  implementation: 'Implementation',
+  design: 'Design',
+  process: 'Process',
+};
+
+const grouped = typeOrder
+  .map((type) => ({
+    type,
+    label: typeLabels[type],
+    patterns: allPatterns
+      .filter((p) => p.data.pattern_type === type)
+      .sort((a, b) => a.data.pattern_id.localeCompare(b.data.pattern_id)),
+  }))
+  .filter((g) => g.patterns.length > 0);
+---
+
+<BaseLayout title="Patterns" description="RSE patterns for HASS and Indigenous research software engineering">
+  <h1>Patterns</h1>
+  <p>
+    Practical solutions to recurring problems in research software engineering for the humanities,
+    arts, social sciences, and Indigenous research contexts. Patterns are classified into four types:
+    <strong>Architectural</strong> (system structure and data governance),
+    <strong>Implementation</strong> (specific technologies and techniques),
+    <strong>Design</strong> (artefact behaviour and interaction),
+    and <strong>Process</strong> (workflows and stakeholder engagement).
+  </p>
+
+  {grouped.map(({ label, patterns }) => (
+    <section class="pattern-group">
+      <h2>{label}</h2>
+      <ul class="pattern-list">
+        {patterns.map((p) => (
+          <li class="pattern-card">
+            <a href={`${base}patterns/${p.id}/`} class="pattern-link">
+              <span class="pattern-id">{p.data.pattern_id}</span>
+              <span class="pattern-title">{p.data.title}</span>
+            </a>
+            <div class="pattern-meta">
+              {p.data.keywords.slice(0, 5).map((kw: string) => (
+                <span class="tag">{kw}</span>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .pattern-group {
+    margin-top: 2.5rem;
+  }
+
+  .pattern-group h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .pattern-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+
+  .pattern-card {
+    border-top: 1px solid var(--color-border);
+    padding: 0.9rem 0;
+  }
+
+  .pattern-card:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pattern-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: var(--color-text);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .pattern-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .pattern-id {
+    font-size: 0.8rem;
+    font-family: monospace;
+    color: var(--color-muted);
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+  }
+
+  .pattern-meta {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    background: var(--color-border);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+  }
+</style>

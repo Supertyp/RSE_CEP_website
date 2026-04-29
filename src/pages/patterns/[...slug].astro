@@ -1,0 +1,182 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const patterns = await getCollection('patterns');
+  return patterns.map((pattern) => ({
+    params: { slug: pattern.id },
+    props: { pattern },
+  }));
+}
+
+const { pattern } = Astro.props;
+const { Content } = await render(pattern);
+const d = pattern.data;
+---
+
+<BaseLayout title={d.title} description={`${d.pattern_id} — ${d.pattern_type} pattern`}>
+  <div class="pattern-header">
+    <a href="../" class="back-link">← Patterns</a>
+    <h1>{d.title}</h1>
+
+    <table class="meta-table">
+      <tbody>
+        <tr><th>Pattern ID</th><td><code>{d.pattern_id}</code></td></tr>
+        <tr><th>Type</th><td class="capitalize">{d.pattern_type}</td></tr>
+        {d.alternative_names && d.alternative_names.length > 0 && (
+          <tr><th>Also known as</th><td>{d.alternative_names.join(', ')}</td></tr>
+        )}
+        <tr><th>Author</th><td>{d.author}</td></tr>
+        <tr><th>Last updated</th><td>{d.last_updated.toISOString().slice(0, 10)}</td></tr>
+        <tr>
+          <th>Keywords</th>
+          <td class="tags">{d.keywords.map((kw: string) => <span class="tag">{kw}</span>)}</td>
+        </tr>
+        <tr>
+          <th>HASS domains</th>
+          <td class="tags">{d.hass_domains.map((dom: string) => <span class="tag tag--domain">{dom}</span>)}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <article class="pattern-body">
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .pattern-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .pattern-header h1 {
+    margin-bottom: 1.25rem;
+  }
+
+  .meta-table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .meta-table th,
+  .meta-table td {
+    padding: 0.4rem 0.75rem 0.4rem 0;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+
+  .meta-table th {
+    color: var(--color-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    width: 8rem;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-top: 0.2rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    background: var(--color-border);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+  }
+
+  .tag--domain {
+    color: var(--color-accent);
+    background: transparent;
+    border: 1px solid var(--color-accent);
+  }
+
+  /* Pattern content prose */
+  .pattern-body :global(h1) {
+    display: none; /* title already shown in header */
+  }
+
+  .pattern-body :global(h2) {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 1.15rem;
+  }
+
+  .pattern-body :global(h3) {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    color: var(--color-muted);
+  }
+
+  .pattern-body :global(table) {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .pattern-body :global(th),
+  .pattern-body :global(td) {
+    border: 1px solid var(--color-border);
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+  }
+
+  .pattern-body :global(th) {
+    background: var(--color-border);
+    font-weight: 600;
+  }
+
+  .pattern-body :global(pre) {
+    background: var(--color-border);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+  }
+
+  .pattern-body :global(code) {
+    font-size: 0.875em;
+    background: var(--color-border);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+  }
+
+  .pattern-body :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .pattern-body :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    margin-left: 0;
+    padding-left: 1rem;
+    color: var(--color-muted);
+  }
+</style>
