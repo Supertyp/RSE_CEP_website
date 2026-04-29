@@ -84,11 +84,10 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero — staggered load animation
+  // Hero — staggered load animation (CTA excluded: critical above-fold element)
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
   tl.from('.hero h1',   { opacity: 0, y: 32, duration: 0.7 })
-    .from('.hero .lead', { opacity: 0, y: 20, duration: 0.55 }, '-=0.4')
-    .from('.hero .cta',  { opacity: 0, y: 14, duration: 0.4 }, '-=0.3');
+    .from('.hero .lead', { opacity: 0, y: 20, duration: 0.55 }, '-=0.4');
 
   // About section — scroll reveal
   gsap.from('.about', {
