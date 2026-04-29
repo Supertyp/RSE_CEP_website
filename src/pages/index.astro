@@ -15,6 +15,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 <BaseLayout title="Home" description="Research Software Engineering Capacity Enhancement Project">
   <section class="hero">
+    <img src={`${base}dots.gif`} alt="" class="hero-gif" aria-hidden="true" />
     <h1>RSE Capacity Enhancement Project</h1>
     <p class="lead">
       Practical guidance and patterns for research software engineering in the humanities,
@@ -113,6 +114,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     padding: 2rem 0 3rem;
     border-bottom: 1px solid var(--color-border);
     margin-bottom: 3rem;
+  }
+
+  .hero-gif {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
   }
 
   .hero h1 {
