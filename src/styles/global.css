@@ -32,6 +32,10 @@ a:hover {
   text-decoration: underline;
 }
 
+a:visited {
+  color: var(--color-accent);
+}
+
 h1, h2, h3 {
   line-height: 1.25;
   margin-top: 0;
