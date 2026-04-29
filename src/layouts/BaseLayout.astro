@@ -25,7 +25,7 @@ const active = (segment: string) => path.startsWith(base + segment);
   <body>
     <header>
       <nav>
-        <a href={base} class="site-title">RSE CEP</a>
+        <a href={base} class="site-title"><span>RSE</span><span class="wordmark-sep">·CEP</span></a>
         <input type="checkbox" id="nav-toggle" class="nav-checkbox" aria-hidden="true" />
         <label for="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -60,7 +60,8 @@ const active = (segment: string) => path.startsWith(base + segment);
 <style>
   header {
     border-bottom: 1px solid var(--color-border);
-    padding: 1rem 2rem;
+    padding: 0.875rem 2rem;
+    background: var(--color-bg);
   }
 
   nav {
@@ -72,16 +73,26 @@ const active = (segment: string) => path.startsWith(base + segment);
   }
 
   .site-title {
-    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
     font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
     color: var(--color-text);
-    letter-spacing: 0.02em;
     flex-shrink: 0;
+    text-decoration: none;
   }
 
   .site-title:hover {
     text-decoration: none;
-    color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .wordmark-sep {
+    font-weight: 300;
+    color: var(--color-muted);
+    letter-spacing: -0.025em;
   }
 
   .nav-checkbox {
@@ -105,14 +116,32 @@ const active = (segment: string) => path.startsWith(base + segment);
   }
 
   nav ul a {
-    color: var(--color-muted);
-    font-size: 0.95rem;
+    color: var(--ink-600, var(--color-muted));
+    font-size: 0.9rem;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 2px;
   }
 
-  nav ul a:hover,
-  nav ul a[aria-current="page"] {
+  nav ul a:hover {
     color: var(--color-text);
     text-decoration: none;
+  }
+
+  nav ul a[aria-current="page"] {
+    color: var(--color-text);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  nav ul a[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.875rem;
+    height: 2px;
+    background: var(--color-accent);
   }
 
   main {
@@ -126,7 +155,9 @@ const active = (segment: string) => path.startsWith(base + segment);
     padding: 2rem;
     text-align: center;
     color: var(--color-muted);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0;
   }
 
   footer a {
@@ -168,6 +199,10 @@ const active = (segment: string) => path.startsWith(base + segment);
     nav ul a {
       display: block;
       padding: 0.5rem 0;
+    }
+
+    nav ul a[aria-current="page"]::after {
+      display: none;
     }
   }
 </style>
