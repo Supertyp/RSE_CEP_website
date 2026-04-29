@@ -5,32 +5,26 @@ const team = [
   {
     name: 'Peter Sefton',
     role: 'Research Software Engineer · Australian National University',
-    bio: 'Bio coming soon.',
   },
   {
     name: 'James Smithies',
     role: 'Professor of Digital Humanities & Director · Australian National University',
-    bio: 'Bio coming soon.',
   },
   {
     name: 'Mat Bettinson',
     role: 'Principal Research Software Engineer · Australian National University',
-    bio: 'Bio coming soon.',
   },
   {
     name: 'Junran Lei',
     role: 'Senior Research Software Engineer · Australian National University',
-    bio: 'Bio coming soon.',
   },
   {
     name: 'Wolfgang Barth',
     role: 'Research Software Engineer (RSE-CEP) · Australian National University',
-    bio: 'Bio coming soon.',
   },
   {
     name: 'Loise Pert',
     role: 'Project Manager · Australian National University',
-    bio: 'Bio coming soon.',
   },
 ];
 ---
@@ -44,7 +38,6 @@ const team = [
       <li class="member">
         <div class="member-name">{member.name}</div>
         <div class="member-role">{member.role}</div>
-        <p class="member-bio">{member.bio}</p>
       </li>
     ))}
   </ul>
@@ -56,12 +49,12 @@ const team = [
     padding: 0;
     margin: 2rem 0 0;
     display: grid;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .member {
     border-top: 1px solid var(--color-border);
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
   }
 
   .member-name {
@@ -72,10 +65,6 @@ const team = [
   .member-role {
     color: var(--color-muted);
     font-size: 0.9rem;
-    margin: 0.2rem 0 0.75rem;
-  }
-
-  .member-bio {
-    margin: 0;
+    margin: 0.2rem 0 0;
   }
 </style>
