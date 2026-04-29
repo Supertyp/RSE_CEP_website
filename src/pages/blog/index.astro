@@ -51,7 +51,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     var script = document.createElement('script');
     script.src = pagefindBase + 'pagefind/pagefind-ui.js';
     script.onload = function () {
-      new PagefindUI({ element: '#search', showSubResults: true });
+      new PagefindUI({ element: '#search', showImages: false });
     };
     document.head.appendChild(script);
   });

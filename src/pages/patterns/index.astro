@@ -26,7 +26,12 @@ const grouped = typeOrder
 ---
 
 <BaseLayout title="Patterns" description="RSE patterns for HASS and Indigenous research software engineering">
+  <Fragment slot="head">
+    <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
+  </Fragment>
+
   <h1>Patterns</h1>
+  <div id="search" class="search-box"></div>
   <p>
     Practical solutions to recurring problems in research software engineering for the humanities,
     arts, social sciences, and Indigenous research contexts. Patterns are classified into four types:
@@ -58,6 +63,17 @@ const grouped = typeOrder
   ))}
 </BaseLayout>
 
+<script is:inline define:vars={{ pagefindBase: base }}>
+  window.addEventListener('DOMContentLoaded', function () {
+    var script = document.createElement('script');
+    script.src = pagefindBase + 'pagefind/pagefind-ui.js';
+    script.onload = function () {
+      new PagefindUI({ element: '#search', showImages: false });
+    };
+    document.head.appendChild(script);
+  });
+</script>
+
 <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -79,6 +95,10 @@ const grouped = typeOrder
 </script>
 
 <style>
+  .search-box {
+    margin-bottom: 2rem;
+  }
+
   .pattern-group {
     margin-top: 2.5rem;
   }
