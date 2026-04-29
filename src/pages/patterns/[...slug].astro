@@ -46,6 +46,16 @@ const d = pattern.data;
   </article>
 </BaseLayout>
 
+<script>
+  import { gsap } from 'gsap';
+
+  const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+  tl.from('.back-link',       { opacity: 0, x: -12, duration: 0.4 })
+    .from('.pattern-header h1', { opacity: 0, y: 20, duration: 0.55 }, '-=0.2')
+    .from('.meta-table',        { opacity: 0, y: 14, duration: 0.45 }, '-=0.3')
+    .from('.pattern-body',      { opacity: 0, y: 16, duration: 0.45 }, '-=0.25');
+</script>
+
 <style>
   .back-link {
     display: inline-block;
