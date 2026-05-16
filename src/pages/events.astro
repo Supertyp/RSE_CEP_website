@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Drop-in Sessions" description="Weekly open online drop-in sessions for HASS and Indigenous research practitioners">
+  <h1>Drop-in Sessions</h1>
+  <p class="lead">
+    The RSE-CEP runs a weekly open online drop-in session for researchers, RSEs, and practitioners
+    working in HASS and Indigenous research. No registration. No formal agenda. Just conversation.
+  </p>
+
+  <dl class="session-meta">
+    <div>
+      <dt>When</dt>
+      <dd>Every Wednesday, 2:00 PM AEST</dd>
+    </div>
+    <div>
+      <dt>Where</dt>
+      <dd><a href="https://anu.zoom.us/j/84484139266?pwd=bH6XRicOe2bYukSJH6OmeLJCYFxwLQ.1">Join on Zoom →</a></dd>
+    </div>
+    <div>
+      <dt>Who</dt>
+      <dd>Any researcher, RSE, or practitioner in the HASS &amp; Indigenous research space. Everyone welcome.</dd>
+    </div>
+  </dl>
+
+  <h2>Monthly topic rotation</h2>
+  <table class="rotation-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Topic</th>
+        <th>2026 dates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1st Wednesday</td>
+        <td>Authentication, Licensing &amp; Access</td>
+        <td>3 Jun · 8 Jul · 5 Aug · 2 Sep · 7 Oct · 4 Nov · 2 Dec</td>
+      </tr>
+      <tr>
+        <td>2nd Wednesday</td>
+        <td>AI Coding best practice</td>
+        <td>10 Jun · 15 Jul · 12 Aug · 9 Sep · 14 Oct · 11 Nov · 9 Dec</td>
+      </tr>
+      <tr>
+        <td>3rd Wednesday</td>
+        <td>Collections, Metadata &amp; Schemas</td>
+        <td>20 May · 17 Jun · 22 Jul · 19 Aug · 16 Sep · 21 Oct · 18 Nov · 16 Dec</td>
+      </tr>
+      <tr>
+        <td>4th Wednesday</td>
+        <td>HASS RSE work and career paths</td>
+        <td>27 May · 24 Jun · 29 Jul · 26 Aug · 23 Sep · 28 Oct · 25 Nov</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Format</h2>
+  <p>
+    Each week, attendees are invited to join conversations about the listed topic — or just listen.
+    We discuss projects, workflows, technical challenges, tools, and design decisions. There is no
+    judgement or evaluation of the work presented. Sessions may also include breakout rooms for
+    more focused discussion.
+  </p>
+  <ul class="format-list">
+    <li><strong>Open</strong> — no invitation required</li>
+    <li><strong>Online</strong> — accessible across Australia and internationally</li>
+    <li><strong>Informal</strong> — to encourage candid discussion</li>
+  </ul>
+
+  <h2>Why these sessions?</h2>
+  <p>
+    These sessions create a regular space where practitioners can connect, share perspectives, and
+    build a shared understanding of technical directions. By coming together informally, we aim to
+    surface real challenges, exchange practical knowledge, and strengthen community across the network.
+  </p>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+  }
+
+  .session-meta {
+    margin: 0 0 2.5rem;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .session-meta div {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  dt {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  dd {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .rotation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .rotation-table th {
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .rotation-table td {
+    padding: 0.75rem 1rem 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .rotation-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .rotation-table td:last-child {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0;
+  }
+
+  .format-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .format-list li {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.95rem;
+  }
+
+  .format-list li:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 640px) {
+    .session-meta div {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .rotation-table {
+      display: block;
+      overflow-x: auto;
+    }
+
+    .rotation-table th:first-child,
+    .rotation-table td:first-child {
+      display: none;
+    }
+  }
+</style>

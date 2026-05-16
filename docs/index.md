@@ -7,6 +7,7 @@
 | Module | Status | Description |
 |--------|--------|-------------|
 | [site-design](modules/site-design/module-status.md) | ✓ Complete | ANU brand colors, Inter typography, dark mode, mobile navigation |
+| [content](modules/content/module-status.md) | 🚧 In progress | Drop-in sessions announcement page |
 
 ## Documentation
 
