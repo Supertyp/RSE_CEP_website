@@ -35,18 +35,6 @@ source_ref: "Peter Sefton, RO-Crate overview talk (YouTube)"
 
 ---
 
-## Pattern Metadata
-
-| Field | Value |
-|-------|-------|
-| **Pattern ID** | I-005 |
-| **Pattern Type** | Implementation |
-| **Keywords** | ro-crate, JSON-LD, metadata, data-packaging, research-objects, FAIR, static-publication, schema.org |
-| **Author(s)** | Mat Bettinson |
-| **Last Updated** | 2026-03-17 |
-
----
-
 ## Intent
 
 Package a research data collection as a self-describing object by placing a JSON-LD metadata file (`ro-crate-metadata.json`) alongside the data, with an optional HTML file that provides a human-readable preview — making the collection portable, machine-readable, and immediately interpretable without external infrastructure.

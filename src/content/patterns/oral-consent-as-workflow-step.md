@@ -27,18 +27,6 @@ source_ref: "Mat Bettinson, RSE-CEP practitioner interview (2026-03-23)"
 
 ---
 
-## Pattern Metadata
-
-| Field | Value |
-|-------|-------|
-| **Pattern ID** | D-002 |
-| **Pattern Type** | Design |
-| **Keywords** | oral-consent, BOLD, Indigenous-languages, mobile-tools, fieldwork, consent, colonial-trauma, accessibility |
-| **Author(s)** | Mat Bettinson |
-| **Last Updated** | 2026-03-31 |
-
----
-
 ## Intent
 
 Design fieldwork and remote consultation tools so that consent collection is an integrated, oral, and dispatchable workflow step — not a separate written form — enabling ethical consent practice in Indigenous and minority language research contexts where written documentation carries historical harm or where literacy cannot be assumed.

@@ -26,18 +26,6 @@ source_ref: "Peter Sefton, RO-Crate overview talk (YouTube)"
 
 ---
 
-## Pattern Metadata
-
-| Field | Value |
-|-------|-------|
-| **Pattern ID** | A-004 |
-| **Pattern Type** | Architectural |
-| **Keywords** | metadata, data-packaging, portability, archival, long-term-preservation, FAIR |
-| **Author(s)** | Mat Bettinson |
-| **Last Updated** | 2026-03-17 |
-
----
-
 ## Intent
 
 Store machine-readable metadata in the same package or directory as the data it describes, so that data collections remain self-describing and portable across storage systems without depending on an external metadata service.
