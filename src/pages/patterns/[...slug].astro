@@ -13,6 +13,14 @@ export async function getStaticPaths() {
 const { pattern } = Astro.props;
 const { Content } = await render(pattern);
 const d = pattern.data;
+const issueTitle = encodeURIComponent(`Change Pattern: ${d.title}`);
+const issueBody = encodeURIComponent(`**Pattern:** ${d.pattern_id} — ${d.title}
+**File:** src/content/patterns/${pattern.id}.md
+
+**Proposed change:**
+
+`);
+const issueUrl = `https://github.com/Supertyp/RSE_CEP_website/issues/new?title=${issueTitle}&body=${issueBody}`;
 ---
 
 <BaseLayout title={d.title} description={`${d.pattern_id} — ${d.pattern_type} pattern`}>
@@ -39,6 +47,7 @@ const d = pattern.data;
         </tr>
       </tbody>
     </table>
+    <a href={issueUrl} class="change-pattern-btn" target="_blank" rel="noopener">Contribute or change pattern →</a>
   </div>
 
   <article class="pattern-body">
@@ -67,6 +76,24 @@ const d = pattern.data;
 
   .back-link:hover {
     color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .change-pattern-btn {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.35rem 0.8rem;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .change-pattern-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
     text-decoration: none;
   }
 
