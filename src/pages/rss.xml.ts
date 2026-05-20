@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-export const GET: APIRoute = async (context) => {
+export const GET: APIRoute = async () => {
   const posts = (await getCollection('blog'))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-  const base = new URL(import.meta.env.BASE_URL, context.site).toString().replace(//$/, '');
+  const base = import.meta.env.SITE + import.meta.env.BASE_URL.slice(0, -1);
 
   const items = posts.map((post) => `
     <item>
