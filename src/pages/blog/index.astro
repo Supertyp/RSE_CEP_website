@@ -18,7 +18,10 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     <link rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />
   </Fragment>
 
-  <h1>Blog</h1>
+  <div class="page-title-row">
+    <h1>Blog</h1>
+    <a href={`${base}rss.xml`} class="rss-link" title="RSS feed">RSS</a>
+  </div>
 
   <div id="search" class="search-box"></div>
 
@@ -58,6 +61,31 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 </script>
 
 <style>
+  .page-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .rss-link {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: 0.2em 0.55em;
+    text-decoration: none;
+    letter-spacing: 0;
+    flex-shrink: 0;
+  }
+
+  .rss-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
   .search-box {
     margin-bottom: 2rem;
   }
