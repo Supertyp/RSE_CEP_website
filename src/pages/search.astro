@@ -15,6 +15,11 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   </p>
 </BaseLayout>
 
+<script>
+  import { gsap } from 'gsap';
+  gsap.from('h1', { opacity: 0, y: 24, duration: 0.6, ease: 'power2.out' });
+</script>
+
 <script is:inline define:vars={{ pagefindBase: base }}>
   window.addEventListener('DOMContentLoaded', function () {
     var script = document.createElement('script');
